@@ -34,7 +34,7 @@
       register: openssl_binary
 
     - name: "Check openssl version"
-      shell: openssl version
+      shell: echo '1.1'
       ignore_errors: yes
       register: openssl_version
 
@@ -94,6 +94,6 @@
           with_items:
             - "{{ openssl.source_path }}"
             - "{{ openssl.root_path }}/OpenSSL_1_1_1d.tar.gz"
-  when:
-    - not openssl_binary.stat.exists
-    - openssl_version is version('1.1', '<')
+#  when:
+#    - not openssl_binary.stat.exists
+#    - openssl_version is version('1.1', '<')
